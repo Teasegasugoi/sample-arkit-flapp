@@ -1,0 +1,11 @@
+{
+  "name": "sample_arkit_flapp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Teasegasugoi/sample-arkit-flapp.git",
+  "author": "zaki <zakipr.roni29@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^2.5.1"
+  }
+}
