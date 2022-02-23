@@ -1,15 +1,18 @@
 import 'package:sample_arkit_flapp/gen/assets.gen.dart';
+import 'package:sample_arkit_flapp/ui/theme/app_text_theme.dart';
+import 'package:sample_arkit_flapp/ui/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'Sample_view_model.dart';
+import 'sample_view_model.dart';
 
 class SamplePage extends HookConsumerWidget {
   const SamplePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final theme = ref.watch(appThemeProvider);
     final state = ref.watch(SampleViewModelProvider);
     final viewModel = ref.watch(SampleViewModelProvider.notifier);
 
@@ -24,9 +27,13 @@ class SamplePage extends HookConsumerWidget {
                   Assets.img.flutterIcon.image(width: 200),
                   Text(
                     L10n.of(context)!.hello,
-                    style: Theme.of(context).textTheme.headline4,
+                    style: theme.textTheme.h70.bold(),
                   ),
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: theme.appColors.primary,
+                      onPrimary: theme.appColors.onPrimary,
+                    ),
                     onPressed: viewModel.increment,
                     child: Text(data.count.toString()),
                   ),
@@ -41,7 +48,9 @@ class SamplePage extends HookConsumerWidget {
         return const Scaffold(
           body: SafeArea(
             child: Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                  // color: theme.appColors.primary,
+                  ),
             ),
           ),
         );
