@@ -1,3 +1,5 @@
+import 'package:sample_arkit_flapp/data/repository/sample/sample_repository.dart';
+import 'package:sample_arkit_flapp/data/repository/sample/sample_repository_impl.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'sample_state.dart';
@@ -15,10 +17,22 @@ class SampleViewModel extends StateNotifier<AsyncValue<SampleState>> {
     load();
   }
 
+  // xxxRepository
+  late final SampleRepository xxxRepository =
+      _ref.read(sampleRepositoryProvider);
+
   // 初期化
-  void load() {
-    state = const AsyncValue.data(
-      SampleState(count: 0),
+  Future<void> load() async {
+    final result = await xxxRepository.fetch();
+    result.when(
+      success: (data) {
+        state = AsyncValue.data(
+          SampleState(count: data),
+        );
+      },
+      failure: (error) {
+        state = AsyncValue.error(error);
+      },
     );
   }
 
