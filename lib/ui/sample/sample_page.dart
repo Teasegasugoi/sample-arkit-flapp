@@ -1,8 +1,8 @@
 import 'package:sample_arkit_flapp/gen/assets.gen.dart';
+import 'package:sample_arkit_flapp/ui/hooks/use_l10n.dart';
 import 'package:sample_arkit_flapp/ui/theme/app_text_theme.dart';
 import 'package:sample_arkit_flapp/ui/theme/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'sample_view_model.dart';
@@ -15,6 +15,7 @@ class SamplePage extends HookConsumerWidget {
     final theme = ref.watch(appThemeProvider);
     final state = ref.watch(SampleViewModelProvider);
     final viewModel = ref.watch(SampleViewModelProvider.notifier);
+    final l10n = useL10n(); // l10n.hello などでアクセス可能
 
     return state.when(
       data: (data) {
@@ -26,7 +27,7 @@ class SamplePage extends HookConsumerWidget {
                 children: [
                   Assets.img.flutterIcon.image(width: 200),
                   Text(
-                    L10n.of(context)!.hello,
+                    l10n.hello,
                     style: theme.textTheme.h70.bold(),
                   ),
                   ElevatedButton(
