@@ -1,3 +1,4 @@
+import 'package:sample_arkit_flapp/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
@@ -32,10 +33,7 @@ class MyHomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              'assets/img/flutter-icon.png',
-              width: 200,
-            ),
+            Assets.img.flutterIcon.image(width: 200),
             Text(
               L10n.of(context)!.hello, // arbファイルに定義した文言
               style: Theme.of(context).textTheme.headline4,
