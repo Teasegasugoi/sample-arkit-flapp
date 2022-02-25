@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:sample_arkit_flapp/ui/routes/app_route.gr.dart';
 import 'package:sample_arkit_flapp/ui/theme/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -17,9 +18,11 @@ class MyApp extends HookConsumerWidget {
     return Sizer(
       builder: (context, orientation, deviceType) => MaterialApp.router(
         debugShowCheckedModeBanner: false,
+        useInheritedMediaQuery: true,
         theme: theme.data,
         darkTheme: AppTheme.dark().data,
         themeMode: themeMode,
+        locale: DevicePreview.locale(context),
         localizationsDelegates: L10n.localizationsDelegates,
         supportedLocales: L10n.supportedLocales,
         routeInformationParser: appRouter.defaultRouteParser(),

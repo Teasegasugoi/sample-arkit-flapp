@@ -25,7 +25,7 @@ dependencies:
   google_fonts: ^2.3.1
   sizer: ^2.0.15
   enum_to_string: ^2.0.1
-  fluttertoast: ^7.1.0
+  device_preview: ^1.0.0
 
 dev_dependencies:
   flutter_test:
