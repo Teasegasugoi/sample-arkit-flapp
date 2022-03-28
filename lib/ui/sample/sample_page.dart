@@ -7,6 +7,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'sample_view_model.dart';
 
+// サンプルクラス
 class SamplePage extends HookConsumerWidget {
   const SamplePage({Key? key}) : super(key: key);
 
